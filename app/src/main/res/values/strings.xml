@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">UnderstandingDatabinding</string>
+    <string name="adult">成年</string>
+    <string name="kid">未成年</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+
+
+</resources>

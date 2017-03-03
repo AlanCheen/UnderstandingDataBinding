@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="me.yifeiyuan.understandingdatabinding.MainActivity"
+    >
+    <uses-permission android:name="android.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <data>
+
+        <variable
+            name="user"
+            type="me.yifeiyuan.understandingdatabinding.User"/>
+
+        <variable
+            name="imgUrl"
+            type="String"/>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        >
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:gravity="center"
+                android:text="姓名："
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:onClick="@{()->user.onUserClick()}"
+                android:text="@{user.name}"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+
+
+
+        <!--user.nickName??user.name 表示 nickName 为 null 则显示 name-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:gravity="center"
+                android:text="昵称："
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@{user.nickName??user.name}"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:gravity="center"
+                android:text="年龄："
+                />
+
+            <!--int 需要转换，能直接用中文!  ""里可以使用``-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@{String.valueOf(user.age)+`岁`}"
+                android:textSize="16sp"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:gravity="center"
+                android:text="是否成年："
+                />
+            <!--可以使用运算符号-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@{user.age>=18?@string/adult:@string/kid}"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:gravity="center"
+                android:text="性别："
+                />
+
+            <!--颜色值不需要加# 一定要 ARGB，一定要带 0x表示十六进制-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@{user.male?0xFF0000FF : 0xFFFF0000}"
+                android:text="@{user.male?@string/male:@string/female}"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:imgUrl="@{imgUrl}"
+            />
+
+    </LinearLayout>
+
+</layout>

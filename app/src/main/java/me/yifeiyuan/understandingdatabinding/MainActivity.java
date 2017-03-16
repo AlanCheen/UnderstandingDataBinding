@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainBinding.setUser(createUser());
         mainBinding.setImgUrl("http://img.qqai.net/uploads/i_5_4094424040x1536326957_21.jpg");
+        mainBinding.setHandler(new EventHandler());
     }
 
     private User createUser() {

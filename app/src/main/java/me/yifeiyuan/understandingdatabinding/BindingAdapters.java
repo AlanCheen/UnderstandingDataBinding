@@ -25,9 +25,9 @@ import com.bumptech.glide.Glide;
 /**
  * Created by 程序亦非猿 on 17/2/15.
  */
-public class BindAdapters {
+public class BindingAdapters {
 
-    private static final String TAG = "BindAdapters";
+    private static final String TAG = "BindingAdapters";
 
     /**
      * 自定义属性 会走到这里处理
